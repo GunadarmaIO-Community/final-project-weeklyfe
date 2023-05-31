@@ -19,10 +19,10 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/blog" element={<DetailBlog />} />
+          <Route path="/blog/:id" element={<DetailBlog />} />
           <Route path="/myblog" element={<MyBlog />} />
           <Route path="/addblog" element={<AddBlog />} />
-          <Route path="/editblog" element={<EditBlog />} />
+          <Route path="/editblog/:id" element={<EditBlog />} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>

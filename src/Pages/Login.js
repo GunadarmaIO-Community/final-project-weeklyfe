@@ -20,7 +20,7 @@ export default function Login() {
 
   useEffect(() => {
     if (user) navigate("/");
-  }, [user]);
+  }, [user,navigate]);
 
   async function handleLogin(e) {
     e.preventDefault();

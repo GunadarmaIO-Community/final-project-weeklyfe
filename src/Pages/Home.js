@@ -1,7 +1,20 @@
 import React from "react";
 import BlogCard from "../Components/BlogCard";
+import axios from "axios";
 
 const Home = () => {
+  
+  const [blogs, setBlogs] = React.useState([]);
+  
+  const getData = async () => {
+    const res = await axios.get('http://34.101.40.188/api/posts')
+    setBlogs(res.data.data)
+  }
+  
+    React.useEffect(() => {
+      getData()
+    }, []);
+  
   return (
     <>
       <div
@@ -15,14 +28,21 @@ const Home = () => {
       </div>
 
       <div className="container mx-auto flex flex-wrap justify-center">
-        <BlogCard title="Blog Pertamaku" author="Hans Evan" />
-        <BlogCard title="Blog Kedua" author="Jess No limit " />
-        <BlogCard />
-        <BlogCard />
-        <BlogCard />
-        <BlogCard />
-        <BlogCard />
-        <BlogCard />
+
+        {blogs.length > 0 ? blogs.map((blog) => (
+  
+        <BlogCard  
+        key={blog.id}
+        id={blog.id}
+        title={blog.title}
+        author={blog.writer.username}
+        content={blog.blog_content}
+        time={blog.created_at}
+        />
+        )) : (
+          <>no data</>
+        )}
+
       </div>
     </>
   );

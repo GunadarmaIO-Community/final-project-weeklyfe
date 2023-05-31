@@ -22,7 +22,7 @@ export default function Register() {
 
   useEffect(() => {
     if (user) navigate("/");
-  }, [user]);
+  }, [user,navigate]);
 
   async function handleRegister(e) {
     e.preventDefault();
